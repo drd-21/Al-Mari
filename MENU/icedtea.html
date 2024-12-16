@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Al-Mari Menu</title>
+    <link rel="icon" href="../img/logo2.webp" type="image/icon">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Sidebar navigation -->
+    <div id="sidebar">
+        <div class="" id="treelines" onclick="show()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Logo and navigation links -->
+        <div>
+            <ul>
+                <div class="user">
+                    <img src="../img/logo2.webp" height="100" />
+                </div>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../index.html"><b>HOME</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../MENU/platter.html"><b>MENU</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../about.html"><b>ABOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../contact.html"><b>CONTACT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../index.html" class="logoutButton"><b>LOGOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../MENU/order.html"><b>ORDER</b></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="menuTitle">
+        <ul>
+            <br>
+
+        </ul>
+    </div>
+
+    <!-- JavaScript for automatic slide change and sidebar toggle -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var counter = 1;
+            setInterval(function () {
+                document.getElementById('r' + counter).checked = true;
+                counter = (counter % 4) + 1; // Improved counter reset
+            }, 3000);
+        });
+
+        function show() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('treelines').classList.toggle('activebtn');
+        }
+
+        // Add event listener to close sidebar when clicking outside of it
+        document.addEventListener('click', function (event) {
+            var sidebar = document.getElementById('sidebar');
+            var treelines = document.getElementById('treelines');
+            var targetElement = event.target; // clicked element
+
+            // Check if the clicked element is not the sidebar or treelines
+            if (!sidebar.contains(targetElement) && !treelines.contains(targetElement)) {
+                // Close the sidebar
+                sidebar.classList.remove('active');
+                treelines.classList.remove('activebtn');
+            }
+        });
+        // Store clicked item details and redirect to order page
+        function selectItem(name, price, image) {
+            const item = { name, price, image };
+        
+            // Retrieve the existing list from localStorage, or initialize an empty array if it doesn't exist
+            let itemList = JSON.parse(localStorage.getItem('selectedItems')) || [];
+        
+            // Add the new item to the list
+            itemList.push(item);
+        
+            // Save the updated list back to localStorage
+            localStorage.setItem('selectedItems', JSON.stringify(itemList));
+        }
+    </script>
+
+    
+
+    <div class="menu">
+        <ul class="hello">
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/platter.html">| PLATTER |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/specialorder.html">| SPECIAL ORDER |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/stew.html">| STEW |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/veggies.html">| VEGGIES |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/sizzling.html">| SIZZLING |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/ricemeal.html">| RICE MEALS |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/noodle.html">| NOODLES |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/soup.html">| SOUP |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/pastaandsalad.html">| PASTA & SALAD |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/rice.html">| RICE |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/fingerfoods.html">| FINGER FOODS |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/sushi.html">| SUSHI |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/burgerandsandwich.html">| BURGER & SANDWICH |</a></li>
+            <li class="good" style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/beverages.html#beverages">| BEVERAGES |</a></li>
+        </ul>
+    </div>
+    <br>
+
+    <main class="menuMain">
+        <div class="menuTitle">
+            <h1</h1>
+            <p></p>
+        </div>
+
+        <div id="menuContainer" class="flex-row-space-resp">
+            <div id="menuCategories">
+                <ul class="flex-cent-col-resp">
+                    <li class="active" id="beverages">BEVERAGES</li>
+                    <div class="gets">
+                        <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/shake.html#beverages">| SHAKE |</a></li>
+                        <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/frappe.html#beverages">| FRAPPE |</a></li>
+                        <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/hotbeverage.html#beverages">| HOT BEVERAGES |</a></li>
+                        <li class="ok" style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/icedtea.html#beverages">| ICED TEA |</a></li>
+                        <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/softdrink.html#beverages">| SOFT DRINKS |</a></li>
+                        <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/coffeeflavoredlatte.html#beverages">| COFFEE FLAVORED LATTE |</a></li>
+                    </div>
+                </ul>
+            </div>
+            <div id="menuItems">
+                <div class="item1">
+                    <ul>
+                        <li>
+                            <div class="card" onclick="selectItem('CUCUMBER', '135', '../img/cucumber.jpg')">
+                                <img src="../img/cucumber.jpg" height="150" alt="CUCUMBER">
+                                <div class="card-content">
+                                    <h2>CUCUMBER</h2>
+                                    <p>₱135</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('FOUR SEASON', '135', '../img/four season.jpg')">
+                                <img src="../img/four season.jpg" height="150" alt="FOUR SEASON">
+                                <div class="card-content">
+                                    <h2>FOUR SEASON</h2>
+                                    <p>₱135</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('ICED TEA', '135', '../img/iced tea.jpg')">
+                                <img src="../img/iced tea.jpg" height="150" alt="ICED TEA">
+                                <div class="card-content">
+                                    <h2>ICED TEA</h2>
+                                    <p>₱135</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

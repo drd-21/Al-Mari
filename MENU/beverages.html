@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Al-Mari Menu</title>
+    <link rel="icon" href="../img/logo2.webp" type="image/icon">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Sidebar navigation -->
+    <div id="sidebar">
+        <div class="" id="treelines" onclick="show()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Logo and navigation links -->
+        <div>
+            <ul>
+                <div class="user">
+                    <img src="../img/logo2.webp" height="100" />
+                </div>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../index.html"><b>HOME</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../MENU/platter.html"><b>MENU</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../about.html"><b>ABOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../contact.html"><b>CONTACT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../index.html" class="logoutButton"><b>LOGOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../MENU/order.html"><b>ORDER</b></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="menuTitle">
+        <ul>
+            <br>
+
+        </ul>
+    </div>
+
+    <!-- JavaScript for automatic slide change and sidebar toggle -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var counter = 1;
+            setInterval(function () {
+                document.getElementById('r' + counter).checked = true;
+                counter = (counter % 4) + 1; // Improved counter reset
+            }, 3000);
+        });
+
+        function show() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('treelines').classList.toggle('activebtn');
+        }
+
+        // Add event listener to close sidebar when clicking outside of it
+        document.addEventListener('click', function (event) {
+            var sidebar = document.getElementById('sidebar');
+            var treelines = document.getElementById('treelines');
+            var targetElement = event.target; // clicked element
+
+            // Check if the clicked element is not the sidebar or treelines
+            if (!sidebar.contains(targetElement) && !treelines.contains(targetElement)) {
+                // Close the sidebar
+                sidebar.classList.remove('active');
+                treelines.classList.remove('activebtn');
+            }
+        });
+        // Store clicked item details and redirect to order page
+        function selectItem(name, price, image) {
+            const item = { name, price, image };
+        
+            // Retrieve the existing list from localStorage, or initialize an empty array if it doesn't exist
+            let itemList = JSON.parse(localStorage.getItem('selectedItems')) || [];
+        
+            // Add the new item to the list
+            itemList.push(item);
+        
+            // Save the updated list back to localStorage
+            localStorage.setItem('selectedItems', JSON.stringify(itemList));
+        }
+    </script>
+
+    
+
+    <div class="menu">
+        <ul class="hello">
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/platter.html">| PLATTER |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/specialorder.html">| SPECIAL ORDER |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/stew.html">| STEW |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/veggies.html">| VEGGIES |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/sizzling.html">| SIZZLING |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/ricemeal.html">| RICE MEALS |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/noodle.html">| NOODLES |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/soup.html">| SOUP |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/pastaandsalad.html">| PASTA & SALAD |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/rice.html">| RICE |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/fingerfoods.html">| FINGER FOODS |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/sushi.html">| SUSHI |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/burgerandsandwich.html">| BURGER & SANDWICH |</a></li>
+            <li class="good" style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/beverages.html#beverages">| BEVERAGES |</a></li>
+        </ul>
+    </div>
+    <br>
+
+    <main class="menuMain">
+        <div class="menuTitle">
+            <h1</h1>
+            <p></p>
+        </div>
+
+        <div id="menuContainer" class="flex-row-space-resp">
+            <div id="menuCategories">
+                <ul class="flex-cent-col-resp">
+                    <li class="active" id="beverages">BEVERAGES</li>
+                    <div class="gets">
+                        <li><a href="../MENU/shake.html#beverages">| SHAKE |</a></li>
+                        <li><a href="../MENU/frappe.html#beverages">| FRAPPE |</a></li>
+                        <li><a href="../MENU/hotbeverage.html#beverages">| HOT BEVERAGES |</a></li>
+                        <li><a href="../MENU/icedtea.html#beverages">| ICED TEA |</a></li>
+                        <li><a href="../MENU/softdrink.html#beverages">| SOFT DRINKS |</a></li>
+                        <li><a href="../MENU/coffeeflavoredlatte.html#beverages">| COFFEE FLAVORED LATTE |</a></li>
+                    </div>
+                </ul>
+            </div>
+            <div id="menuItems">
+                <div class="item1">
+                    <ul>
+                        <li>
+                            <div class="card" onclick="selectItem('MANGO SHAKE', '125', '../img/mango shake.png')">
+                                <img src="../img/mango shake.png" height="150" alt="MANGO SHAKE">
+                                <div class="card-content">
+                                    <h2>MANGO SHAKE</h2>
+                                    <p>₱125</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('APPLE SHAKE', '125', '../img/apple shake.jpg')">
+                                <img src="../img/apple shake.jpg" height="150" alt="APPLE SHAKE">
+                                <div class="card-content">
+                                    <h2>APPLE SHAKE</h2>
+                                    <p>₱125</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('CUCUMBER SHAKE', '125', '../img/cucumber shake.webp')">
+                                <img src="../img/cucumber shake.webp" height="150" alt="CUCUMBER SHAKE">
+                                <div class="card-content">
+                                    <h2>CUCUMBER SHAKE</h2>
+                                    <p>₱125</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('MATCHA', '145', '../img/matcha.jpg')">
+                                <img src="../img/matcha.jpg" height="150" alt="MATCHA">
+                                <div class="card-content">
+                                    <h2>MATCHA</h2>
+                                    <p>₱145</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('COOKIES AND CREAM', '155', '../img/cookies and cream.jpg')">
+                                <img src="../img/cookies and cream.jpg" height="150" alt="COOKIES AND CREAM">
+                                <div class="card-content">
+                                    <h2>COOKIES AND CREAM</h2>
+                                    <p>₱155</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('CREAMY STRAWBERRY', '145', '../img/creamy strawberry.jpg')">
+                                <img src="../img/creamy strawberry.jpg" height="150" alt="CREAMY STRAWBERRY">
+                                <div class="card-content">
+                                    <h2>CREAMY STRAWBERRY</h2>
+                                    <p>₱145</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('STRAWBERRY MOCHA', '145', '../img/strawberry mocha.jpg')">
+                                <img src="../img/strawberry mocha.jpg" height="150" alt="STRAWBERRY MOCHA">
+                                <div class="card-content">
+                                    <h2>STRAWBERRY MOCHA</h2>
+                                    <p>₱145</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('SALTED CARAMEL', '145', '../img/salted caramel.jpg')">
+                                <img src="../img/salted caramel.jpg" height="150" alt="SALTED CARAMEL">
+                                <div class="card-content">
+                                    <h2>SALTED CARAMEL</h2>
+                                    <p>₱145</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('MOCHA', '135', '../img/mocha.jpg')">
+                                <img src="../img/mocha.jpg" height="150" alt="MOCHA">
+                                <div class="card-content">
+                                    <h2>MOCHA</h2>
+                                    <p>₱135</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('SHORTBREAD & CARAMEL', '145', '../img/shortbread and caramel frappe.webp')">
+                                <img src="../img/shortbread and caramel frappe.webp" height="150" alt="SHORTBREAD & CARAMEL">
+                                <div class="card-content">
+                                    <h2>SHORTBREAD & CARAMEL</h2>
+                                    <p>₱145</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('LATTE', '95', '../img/latte.jpg')">
+                                <img src="../img/latte.jpg" height="150" alt="LATTE">
+                                <div class="card-content">
+                                    <h2>LATTE</h2>
+                                    <p>₱95</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('CAPUCCINO', '95', '../img/cappuccino.jpg')">
+                                <img src="../img/cappuccino.jpg" height="150" alt="CAPUCCINO">
+                                <div class="card-content">
+                                    <h2>CAPUCCINO</h2>
+                                    <p>₱95</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('AMERICANO', '95', '../img/americano.jpg')">
+                                <img src="../img/americano.jpg" height="150" alt="AMERICANO">
+                                <div class="card-content">
+                                    <h2>AMERICANO</h2>
+                                    <p>₱95</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('TEA', '65', '../img/tea.jpg')">
+                                <img src="../img/tea.jpg" height="150" alt="TEA">
+                                <div class="card-content">
+                                    <h2>TEA</h2>
+                                    <p>₱65</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('CUCUMBER', '135', '../img/cucumber.jpg')">
+                                <img src="../img/cucumber.jpg" height="150" alt="CUCUMBER">
+                                <div class="card-content">
+                                    <h2>CUCUMBER</h2>
+                                    <p>₱135</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('FOUR SEASON', '135', '../img/four season.jpg')">
+                                <img src="../img/four season.jpg" height="150" alt="FOUR SEASON">
+                                <div class="card-content">
+                                    <h2>FOUR SEASON</h2>
+                                    <p>₱135</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('ICED TEA', '135', '../img/iced tea.jpg')">
+                                <img src="../img/iced tea.jpg" height="150" alt="ICED TEA">
+                                <div class="card-content">
+                                    <h2>ICED TEA</h2>
+                                    <p>₱135</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('COKE', '65', '../img/coke.jpg')">
+                                <img src="../img/coke.jpg" height="150" alt="COKE">
+                                <div class="card-content">
+                                    <h2>COKE</h2>
+                                    <p>₱65</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('SPRITE', '65', '../img/sprite.webp')">
+                                <img src="../img/sprite.webp" height="150" alt="SPRITE">
+                                <div class="card-content">
+                                    <h2>SPRITE</h2>
+                                    <p>₱65</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('ROYAL', '65', '../img/royal.jpg')">
+                                <img src="../img/royal.jpg" height="150" alt="ROYAL">
+                                <div class="card-content">
+                                    <h2>ROYAL</h2>
+                                    <p>₱65</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('CARAMEL MACCHIATO', '120', '../img/caramel macchiato.jpg')">
+                                <img src="../img/caramel macchiato.jpg" height="150" alt="CARAMEL MACCHIATO">
+                                <div class="card-content">
+                                    <h2>CARAMEL MACCHIATO</h2>
+                                    <p>HOT: ₱120</p>
+                                    <p>COLD: ₱125</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('WHITE MOCHA LATTE', '120', '../img/white mocha latte.jpg')">
+                                <img src="../img/white mocha latte.jpg" height="150" alt="WHITE MOCHA LATTE">
+                                <div class="card-content">
+                                    <h2>WHITE MOCHA LATTE</h2>
+                                    <p>HOT: ₱120</p>
+                                    <p>COLD: ₱125</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('VANILLA MOCHA LATTE', '120', '../img/vanilla mocha latte.jpg')">
+                                <img src="../img/vanilla mocha latte.jpg" height="150" alt="VANILLA MOCHA LATTE">
+                                <div class="card-content">
+                                    <h2>VANILLA MOCHA LATTE</h2>
+                                    <p>HOT: ₱120</p>
+                                    <p>COLD: ₱125</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('BLUEBERRY MOCHA LATTE', '120', '../img/blueberry mochal latte.jpg')">
+                                <img src="../img/blueberry mochal latte.jpg" height="150" alt="BLUEBERRY MOCHA LATTE">
+                                <div class="card-content">
+                                    <h2>BLUEBERRY MOCHA LATTE</h2>
+                                    <p>HOT: ₱120</p>
+                                    <p>COLD: ₱125</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('STRAWBERRY MOCHA LATTE', '120', '../img/strawberry mocha.jpg')">
+                                <img src="../img/strawberry mocha.jpg" height="150" alt="STRAWBERRY MOCHA LATTE">
+                                <div class="card-content">
+                                    <h2>STRAWBERRY MOCHA LATTE</h2>
+                                    <p>HOT: ₱120</p>
+                                    <p>COLD: ₱125</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('SHORTBREAD & CARAMEL', '120', '../img/shortbread and caramel latte.jpg')">
+                                <img src="../img/shortbread and caramel latte.jpg" height="150" alt="SHORTBREAD & CARAMEL">
+                                <div class="card-content">
+                                    <h2>SHORTBREAD & CARAMEL</h2>
+                                    <p>HOT: ₱120</p>
+                                    <p>COLD: ₱125</p>
+                                </div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

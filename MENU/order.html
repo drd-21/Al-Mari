@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Order Summary</title>
+    <link rel="icon" href="../img/logo2.webp" type="image/icon">
+    <link rel="stylesheet" href="../style.css">
+
+   <!-- Leaflet Routing Machine CSS -->
+<!-- Leaflet CSS (You should have Leaflet included before this script) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<!-- Leaflet Routing Machine CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Leaflet Routing Machine JS -->
+<script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+</head>
+
+<body>
+    <!-- Sidebar navigation -->
+    <div id="sidebar">
+        <div id="treelines" onclick="show()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Logo and navigation links -->
+        <div>
+            <ul>
+                <div class="user">
+                    <img src="../img/logo2.webp" height="100" alt="Logo"/>
+                </div>
+                <li><a href="../index.html"><b>HOME</b></a></li>
+                <li><a href="../MENU/platter.html"><b>MENU</b></a></li>
+                <li><a href="../about.html"><b>ABOUT</b></a></li>
+                <li><a href="../contact.html"><b>CONTACT</b></a></li>
+                <li><a href="../login.html" class="logoutButton"><b>LOGOUT</b></a></li>
+                <li><a href="../MENU/order.html"><b>ORDER</b></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="menuMain">
+        <div class="menuTitle">
+            <h1>Order Summary</h1>
+            <p>Here are the items you have selected:</p>
+        </div>
+
+        <div class="order-container">
+            <div id="orderList" class="order-list">
+                <!-- Order items will be dynamically populated here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Checkout Section at the bottom-left -->
+    <div id="orderSummary" class="order-summary">
+        <div id="totalPrice">
+            <h2>Total: ₱<span id="totalAmount">0</span></h2>
+        </div>
+        <div id="checkout">
+            <button id="checkoutButton">Proceed to Checkout</button>
+        </div>
+        <form id="customerDetails" class="customer-details">
+            <label for="customerName">Name:</label>
+            <input type="text" id="customerName" name="customerName" placeholder="Enter your name" required />
+
+            <label for="customerAddress">Address:</label>
+            <textarea id="customerAddress" name="customerAddress" placeholder="Enter your address" required></textarea>
+
+            <!-- Add the map container -->
+            <label for="customerMap">Pin your location:</label>
+            <div id="customerMap" style="height: 300px; width: 100%;"></div>
+
+            <label for="deliveryTime">Estimated Delivery Time:</label>
+            <input type="text" id="deliveryTime" name="deliveryTime" readonly />
+
+            <label for="customerPhone">Phone Number:</label>
+            <input type="tel" id="customerPhone" name="customerPhone" placeholder="Enter your phone number" required />
+        </form>
+    </div>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let itemList = JSON.parse(localStorage.getItem('selectedItems')) || [];
+            let total = 0;
+
+            const orderList = document.getElementById('orderList');
+            const totalAmount = document.getElementById('totalAmount');
+            const deliveryTimeInput = document.getElementById('deliveryTime');
+
+             // Store's location (default pin)
+             const storeLat = 14.119505336662783;
+             const storeLon = 122.9462653398514;
+
+            // Function to update the total price
+            function updateTotal() {
+                total = itemList.reduce((sum, item) => {
+                    let price = parseFloat(item.price) || 0;
+                    let quantity = parseInt(item.quantity) || 1;
+                    return sum + (price * quantity);
+                }, 0);
+                totalAmount.textContent = total.toFixed(2);
+            }
+
+            // Function to check if the item already exists in the cart
+            function findItemIndex(itemName) {
+                return itemList.findIndex(item => item.name === itemName);
+            }
+
+            // Function to add or increase item quantity
+            function addItemToCart(newItem) {
+                const index = findItemIndex(newItem.name);
+                if (index !== -1) {
+                    // Item exists, increase the quantity
+                    itemList[index].quantity += 1;
+                } else {
+                    // Item doesn't exist, add a new one
+                    itemList.push(newItem);
+                }
+                localStorage.setItem('selectedItems', JSON.stringify(itemList));
+                renderOrderList();
+                updateTotal();
+            }
+
+            // Function to increase item quantity
+            function increaseQuantity(index) {
+                itemList[index].quantity += 1;
+                localStorage.setItem('selectedItems', JSON.stringify(itemList));
+                renderOrderList();
+                updateTotal();
+            }
+
+            // Function to decrease item quantity
+            function decreaseQuantity(index) {
+                if (itemList[index].quantity > 1) {
+                    itemList[index].quantity -= 1;
+                    localStorage.setItem('selectedItems', JSON.stringify(itemList));
+                    renderOrderList();
+                    updateTotal();
+                }
+            }
+
+            // Function to remove an item from the cart
+            function removeItem(index) {
+                itemList.splice(index, 1);
+                localStorage.setItem('selectedItems', JSON.stringify(itemList));
+                renderOrderList();
+                updateTotal();
+            }
+
+            // Render the order list in the UI
+            function renderOrderList() {
+                orderList.innerHTML = "";
+                itemList.forEach((item, index) => {
+                    item.price = item.price || '0';
+                    item.quantity = item.quantity || 1;
+
+                    let listItem = document.createElement('div');
+                    listItem.classList.add('order-card');
+                    listItem.innerHTML = `
+                        <div class="card">
+                            <img src="${item.image}" height="150" alt="${item.name}">
+                            <div class="card-content">
+                                <h2>${item.name}</h2>
+                                <p>Price: ₱${item.price}</p>
+                                <p>Quantity: ${item.quantity}</p>
+                                <button class="increaseButton" onclick="increaseQuantity(${index})">+</button>
+                                <button class="decreaseButton" onclick="decreaseQuantity(${index})">-</button>
+                                <button class="removeButton" onclick="removeItem(${index})">Remove</button>
+                            </div>
+                        </div>
+                    `;
+                    orderList.appendChild(listItem);
+                });
+            }
+
+            window.removeItem = removeItem;
+            window.increaseQuantity = increaseQuantity;
+            window.decreaseQuantity = decreaseQuantity;
+
+            // Example of dynamically adding items (replace this with the logic to add the clicked item)
+            // Use addItemToCart to add items to the cart dynamically
+            // For demonstration, call addItemToCart with a sample item
+            // Example: addItemToCart({name: 'Burger', price: 100, image: 'burger.png', quantity: 1});
+
+            renderOrderList();
+            updateTotal();
+
+            document.getElementById('checkoutButton').addEventListener('click', function () {
+                // Gather customer details from the form
+                const customerName = document.getElementById('customerName').value;
+                const customerAddress = document.getElementById('customerAddress').value;
+                const customerPhone = document.getElementById('customerPhone').value;
+                const deliveryTime = document.getElementById('deliveryTime').value;
+            
+                // Check for required fields
+                if (!customerName || !customerAddress || !customerPhone) {
+                    alert("Please fill out all required fields.");
+                    return;
+                }
+            
+                // Check if there are items in the cart
+                if (itemList.length > 0) {
+                    // Create order data
+                    const orderData = {
+                        customerName: customerName,
+                        customerAddress: customerAddress,
+                        customerPhone: customerPhone,
+                        deliveryTime: deliveryTime,
+                        items: itemList.map(item => ({
+                            name: item.name,
+                            quantity: item.quantity,
+                            price: item.price
+                        })),
+                        totalAmount: itemList.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+                    };
+            
+                    // Save order data to localStorage
+                    localStorage.setItem('orderData', JSON.stringify(orderData));
+            
+                    // Redirect to the receipt page
+                    location.href = "../checkout.html";
+                } else {
+                    alert("Your cart is empty!");
+                }
+            });
+            
+        });
+
+        function show() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('treelines').classList.toggle('activebtn');
+        }
+
+        // Initialize Leaflet map
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize the map's default center
+            const initialLat = 14.11475;
+            const initialLon = 122.96939;
+        
+            const map = L.map('customerMap').setView([initialLat, initialLon], 13); // Center map on initialLat, initialLon
+        
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+        
+            let userMarker = null; // To store user marker
+            let routeControl = null; // Store the routing control
+        
+            // Function to calculate delivery time
+            function calculateDeliveryTime(clickedLat, clickedLon) {
+                const distance = map.distance([initialLat, initialLon], [clickedLat, clickedLon]); // Distance in meters
+                const estimatedTime = Math.round((distance / 1000) * 15); // 15 minutes per km (adjust as needed)
+                document.getElementById('deliveryTime').value = `${estimatedTime} minutes`;
+            }
+        
+            // Handle map click to place a new marker for delivery location
+            map.on('click', function (e) {
+                const clickedLat = e.latlng.lat;
+                const clickedLon = e.latlng.lng;
+        
+                // If a marker exists, remove it
+                if (userMarker) {
+                    map.removeLayer(userMarker);
+                }
+        
+                // Create a new marker at the clicked position
+                userMarker = L.marker([clickedLat, clickedLon]).addTo(map)
+                    .bindPopup("Your Delivery Address")
+                    .openPopup();
+        
+        
+                // Optionally, you can display the delivery time
+                calculateDeliveryTime(clickedLat, clickedLon);
+        
+                // If a route exists, remove it
+                if (routeControl) {
+                    routeControl.setWaypoints([L.latLng(initialLat, initialLon), L.latLng(clickedLat, clickedLon)]);
+                } else {
+                    // Add a new route from initial point to the clicked point
+                    routeControl = L.Routing.control({
+                        waypoints: [
+                            L.latLng(initialLat, initialLon),
+                            L.latLng(clickedLat, clickedLon)
+                        ],
+                        routeWhileDragging: true
+                    }).addTo(map);
+                }
+            });
+        });
+    
+    </script>
+</body>
+</html>

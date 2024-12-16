@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Al-Mari Menu</title>
+    <link rel="icon" href="../img/logo2.webp" type="image/icon">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Sidebar navigation -->
+    <div id="sidebar">
+        <div class="" id="treelines" onclick="show()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Logo and navigation links -->
+        <div>
+            <ul>
+                <div class="user">
+                    <img src="../img/logo2.webp" height="100" />
+                </div>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../index.html"><b>HOME</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../MENU/platter.html"><b>MENU</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../about.html"><b>ABOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../contact.html"><b>CONTACT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../index.html" class="logoutButton"><b>LOGOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../MENU/order.html"><b>ORDER</b></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="menuTitle">
+        <ul>
+            <br>
+
+        </ul>
+    </div>
+
+    <!-- JavaScript for automatic slide change and sidebar toggle -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var counter = 1;
+            setInterval(function () {
+                document.getElementById('r' + counter).checked = true;
+                counter = (counter % 4) + 1; // Improved counter reset
+            }, 3000);
+        });
+
+        function show() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('treelines').classList.toggle('activebtn');
+        }
+
+        // Add event listener to close sidebar when clicking outside of it
+        document.addEventListener('click', function (event) {
+            var sidebar = document.getElementById('sidebar');
+            var treelines = document.getElementById('treelines');
+            var targetElement = event.target; // clicked element
+
+            // Check if the clicked element is not the sidebar or treelines
+            if (!sidebar.contains(targetElement) && !treelines.contains(targetElement)) {
+                // Close the sidebar
+                sidebar.classList.remove('active');
+                treelines.classList.remove('activebtn');
+            }
+        });
+        // Store clicked item details and redirect to order page
+        function selectItem(name, price, image) {
+            const item = { name, price, image };
+        
+            // Retrieve the existing list from localStorage, or initialize an empty array if it doesn't exist
+            let itemList = JSON.parse(localStorage.getItem('selectedItems')) || [];
+        
+            // Add the new item to the list
+            itemList.push(item);
+        
+            // Save the updated list back to localStorage
+            localStorage.setItem('selectedItems', JSON.stringify(itemList));
+        }
+    </script>
+
+    
+
+    <div class="menu">
+        <ul class="hello">
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/platter.html#platter">| PLATTER |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/specialorder.html">| SPECIAL ORDER |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/stew.html">| STEW |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/veggies.html">| VEGGIES |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/sizzling.html">| SIZZLING |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/ricemeal.html">| RICE MEALS |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/noodle.html">| NOODLES |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/soup.html">| SOUP |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/pastaandsalad.html">| PASTA & SALAD |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/rice.html">| RICE |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/fingerfoods.html">| FINGER FOODS |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/sushi.html">| SUSHI |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/burgerandsandwich.html">| BURGER & SANDWICH |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/beverages.html">| BEVERAGES |</a></li>
+        </ul>
+    </div>
+    <br>
+
+    <main class="menuMain">
+        <div class="menuTitle">
+            <h1></h1>
+            <p></p>
+        </div>
+
+        <div id="menuContainer" class="flex-row-space-resp">
+            <div id="menuCategories">
+                <ul class="flex-cent-col-resp">
+                    <li class="active" id="platter">PLATTER</li>
+                    <div class="gets">
+                        <li><a href="../MENU/chicken.html#platter">| CHICKEN |</a></li>
+                        <li><a href="../MENU/porkandribs.html#platter">| PORK AND RIBS |</a></li>
+                        <li class="ok"><a href="../MENU/seafoodandsalmon.html#platter">| SEAFOOD & SALMON |</a></li>
+                    </div>
+                </ul>
+            </div>
+            <div id="menuItems">
+                <div class="item1">
+                    <ul>
+                        <li>
+                            <div class="card" onclick="selectItem('Cheese Baked Tahong', '285', '../img/cheese baked tahong.jpg')">
+                                <img src="../img/cheese baked tahong.jpg" height="150" alt="CHEESE BAKED TAHONG">
+                                <div class="card-content">
+                                    <h2>CHEESE BAKED TAHONG</h2>
+                                    <p>₱285</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Cajun Baked Tahong', '285', '')">
+                                <img src="" height="150" alt="CAJUN BAKED TAHONG">
+                                <div class="card-content">
+                                    <h2>CAJUN BAKED TAHONG</h2>
+                                    <p>₱285</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Buttered Shrimp', '315', '../img/buttered shrimp.jpg')">
+                                <img src="../img/buttered shrimp.jpg" height="150" alt="BUTTERED SHRIMP">
+                                <div class="card-content">
+                                    <h2>BUTTERED SHRIMP</h2>
+                                    <p>₱315</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Shrimp Salvatore', '315', '../img/shrimp salvatore (almari fb 3 by2).webp')">
+                                <img src="../img/shrimp salvatore (almari fb 3 by2).webp" height="150" alt="SHRIMP SALVATORE">
+                                <div class="card-content">
+                                    <h2>SHRIMP SALVATORE</h2>
+                                    <p>₱315</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Shrimp Gambaz', '325', '../img/shrimp gambaz.jpg')">
+                                <img src="../img/shrimp gambaz.jpg" height="150" alt="SHRIMP GAMBAZ">
+                                <div class="card-content">
+                                    <h2>SHRIMP GAMBAZ</h2>
+                                    <p>₱325</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Tempura', '355', '../img/tempura(almarifb3by2).png')">
+                                <img src="../img/tempura(almarifb3by2).png" height="150" alt="TEMPURA">
+                                <div class="card-content">
+                                    <h2>TEMPURA</h2>
+                                    <p>₱355</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Calamares', '355', '../img/calamares (almari fb 3by2).png')">
+                                <img src="../img/calamares (almari fb 3by2).png" height="150" alt="CALAMARES">
+                                <div class="card-content">
+                                    <h2>CALAMARES</h2>
+                                    <p>₱355</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Stuffed Squid', '385', '../img/stuffed squid.jpg')">
+                                <img src="../img/stuffed squid.jpg" height="150" alt="STUFFED SQUID">
+                                <div class="card-content">
+                                    <h2>STUFFED SQUID</h2>
+                                    <p>₱385</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Barbecue Squid', '385', '../img/bbq squid(3by2) (2).png')">
+                                <img src="../img/bbq squid(3by2) (2).png" height="150" alt="BARBECUE SQUID">
+                                <div class="card-content">
+                                    <h2>BARBECUE SQUID</h2>
+                                    <p>₱385</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Sweet & Sour Tilapia', '265', '../img/tilapia sweet_sour(almarifb 3by2).png')">
+                                <img src="../img/tilapia sweet_sour(almarifb 3by2).png" height="150" alt="SWEET & SOUR TILAPIA">
+                                <div class="card-content">
+                                    <h2>SWEET & SOUR TILAPIA</h2>
+                                    <p>₱265</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Fried Salmon', '295', '../img/fried salmon.jpeg')">
+                                <img src="../img/fried salmon.jpeg" height="150" alt="FRIED SALMON">
+                                <div class="card-content">
+                                    <h2>FRIED SALMON</h2>
+                                    <p>₱295</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Buttered Garlic Salmon', '298', '../img/Garlic-Butter-Salmon_9-SQ.webp')">
+                                <img src="../img/Garlic-Butter-Salmon_9-SQ.webp" height="150" alt="BUTTERED GARLIC SALMON">
+                                <div class="card-content">
+                                    <h2>BUTTERED GARLIC SALMON</h2>
+                                    <p>₱298</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Sinigang na Salmon', '325', '../img/8.png')">
+                                <img src="../img/8.png" height="150" alt="SINIGANG NA SALMON">
+                                <div class="card-content">
+                                    <h2>SINIGANG NA SALMON</h2>
+                                    <p>₱325</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

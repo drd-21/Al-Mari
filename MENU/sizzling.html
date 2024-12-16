@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Al-Mari Menu</title>
+    <link rel="icon" href="../img/logo2.webp" type="image/icon">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Sidebar navigation -->
+    <div id="sidebar">
+        <div class="" id="treelines" onclick="show()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Logo and navigation links -->
+        <div>
+            <ul>
+                <div class="user">
+                    <img src="../img/logo2.webp" height="100" />
+                </div>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../index.html"><b>HOME</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../MENU/platter.html"><b>MENU</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../about.html"><b>ABOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../contact.html"><b>CONTACT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../index.html" class="logoutButton"><b>LOGOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="../MENU/order.html"><b>ORDER</b></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="menuTitle">
+        <ul>
+            <br>
+
+        </ul>
+    </div>
+
+    <!-- JavaScript for automatic slide change and sidebar toggle -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var counter = 1;
+            setInterval(function () {
+                document.getElementById('r' + counter).checked = true;
+                counter = (counter % 4) + 1; // Improved counter reset
+            }, 3000);
+        });
+
+        function show() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('treelines').classList.toggle('activebtn');
+        }
+
+        // Add event listener to close sidebar when clicking outside of it
+        document.addEventListener('click', function (event) {
+            var sidebar = document.getElementById('sidebar');
+            var treelines = document.getElementById('treelines');
+            var targetElement = event.target; // clicked element
+
+            // Check if the clicked element is not the sidebar or treelines
+            if (!sidebar.contains(targetElement) && !treelines.contains(targetElement)) {
+                // Close the sidebar
+                sidebar.classList.remove('active');
+                treelines.classList.remove('activebtn');
+            }
+        });
+        // Store clicked item details and redirect to order page
+        function selectItem(name, price, image) {
+            const item = { name, price, image };
+        
+            // Retrieve the existing list from localStorage, or initialize an empty array if it doesn't exist
+            let itemList = JSON.parse(localStorage.getItem('selectedItems')) || [];
+        
+            // Add the new item to the list
+            itemList.push(item);
+        
+            // Save the updated list back to localStorage
+            localStorage.setItem('selectedItems', JSON.stringify(itemList));
+        }
+    </script>
+
+   
+
+    <div class="menu">
+        <ul class="hello">
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/platter.html">| PLATTER |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/specialorder.html">| SPECIAL ORDER |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/stew.html">| STEW |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/veggies.html">| VEGGIES |</a></li>
+            <li class="good" style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/sizzling.html">| SIZZLING |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/ricemeal.html">| RICE MEALS |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/noodle.html">| NOODLES |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/soup.html">| SOUP |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/pastaandsalad.html">| PASTA & SALAD |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/rice.html">| RICE |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/fingerfoods.html">| FINGER FOODS |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/sushi.html">| SUSHI |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/burgerandsandwich.html">| BURGER & SANDWICH |</a></li>
+            <li style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="../MENU/beverages.html">| BEVERAGES |</a></li>
+        </ul>
+    </div>
+    <br>
+
+    <main class="menuMain">
+        <div class="menuTitle">
+            <h1</h1>
+            <p></p>
+        </div>
+
+        <div id="menuContainer" class="flex-row-space-resp">
+            <div id="menuCategories">
+                <ul class="flex-cent-col-resp">
+                    <li class="active">SIZZLING</li>
+                </ul>
+            </div>
+            <div id="menuItems">
+                <div class="item1">
+                    <ul>
+                        <li>
+                            <div class="card" onclick="selectItem('Pork Sisig', '315', '../img/pork sisig.jpg')">
+                                <img src="../img/pork sisig.jpg" height="150" alt="PORK SISIG">
+                                <div class="card-content">
+                                    <h2>PORK SISIG</h2>
+                                    <p>₱315</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('ChixSisig', '285', '../img/chix sisig.webp')">
+                                <img src="../img/chix sisig.webp" height="150" alt="CHIXSISIG">
+                                <div class="card-content">
+                                    <h2>CHIXSISIG</h2>
+                                    <p>₱285</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Tofu Sisig', '265', '../img/tofu sisig.jpg')">
+                                <img src="../img/tofu sisig.jpg" height="150" alt="TOFU SISIG">
+                                <div class="card-content">
+                                    <h2>TOFU SISIG</h2>
+                                    <p>₱265</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Beef Salpicao', '355', '../img/Beef-Salpicao.jpg')">
+                                <img src="../img/Beef-Salpicao.jpg" height="150" alt="BEEF SALPICAO">
+                                <div class="card-content">
+                                    <h2>BEEF SALPICAO</h2>
+                                    <p>₱355</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Bulalo Steak', '375', '../img/bulalo steak or sizzzling bulalo (almari fb 3by2).png')">
+                                <img src="../img/bulalo steak or sizzzling bulalo (almari fb 3by2).png" height="150" alt="BULALO STEAK">
+                                <div class="card-content">
+                                    <h2>BULALO STEAK</h2>
+                                    <p>₱375</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Burger Steak', '285', '../img/burger steak-sizzling.jpg')">
+                                <img src="../img/burger steak-sizzling.jpg" height="150" alt="BURGER STEAK">
+                                <div class="card-content">
+                                    <h2>BURGER STEAK</h2>
+                                    <p>₱285</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card" onclick="selectItem('Tokwa\'t Baboy', '265', '../img/tokwa\'t baboy.jpg')">
+                                <img src="../img/tokwa't baboy.jpg" height="150" alt="TOKWA'T BABOY">
+                                <div class="card-content">
+                                    <h2>TOKWA'T BABOY</h2>
+                                    <p>₱265</p>
+                                </div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
