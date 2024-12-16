@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Al-Mari Cafe and Restaurant</title>
+    <link rel="icon" href="img/logo2.webp" type="image/icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="" id="treelines" onclick="show()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div>
+            <ul>
+                <div class="user">
+                    <img src="img/logo2.webp" height="100" />
+                </div>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="home.html"><b>HOME</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="MENU/platter.html"><b>MENU</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="about.html"><b>ABOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="contact.html"><b>CONTACT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="index.html" class="logoutButton"><b>LOGOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="MENU/order.html"><b>ORDER</b></a></li>
+            </ul>
+        </div>
+
+    
+    </div>
+
+    <script>
+        // Slide show
+        document.addEventListener("DOMContentLoaded", function () {
+            var counter = 1;
+            setInterval(function () {
+                document.getElementById('r' + counter).checked = true;
+                counter = (counter % 4) + 1;
+            }, 3000);
+        });
+
+        // Toggle sidebar
+        function show() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('treelines').classList.toggle('activebtn');
+        }
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function (event) {
+            var sidebar = document.getElementById('sidebar');
+            var treelines = document.getElementById('treelines');
+            var targetElement = event.target;
+
+            if (!sidebar.contains(targetElement) && !treelines.contains(targetElement)) {
+                sidebar.classList.remove('active');
+                treelines.classList.remove('activebtn');
+            }
+        });
+    </script>
+
+    <!-- Rest of your content -->
+    <div class="menuTitle">
+        <ul>
+            <br>
+        </ul>
+    </div>
+    
+    <div style="overflow: hidden;">
+        <div class="eyy">
+            <h1 style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6; position: absolute; width: 100%; margin-top: 250px;">"Taste the Difference, <br>Feel the Hospitality: <br>Where Every Plate Tells a Story."</h1>
+        </div>
+        <div class="slides">
+            <input type="radio" name="r" id="r1" checked>
+            <input type="radio" name="r" id="r2">
+            <input type="radio" name="r" id="r3">
+            <input type="radio" name="r" id="r4">
+
+            <div class="slide s1">
+                <img src="img/1.webp" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="img/2.webp" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="img/3.webp" alt="Slide 3">
+            </div>
+            <div class="slide">
+                <img src="img/4.webp" alt="Slide 4">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

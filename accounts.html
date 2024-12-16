@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <script>
+        // Retrieve accounts from localStorage
+        let adminAccounts = JSON.parse(localStorage.getItem("adminAccounts")) || [];
+        let userAccounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
+
+        // Populate the user table
+        function populateTable() {
+            const tableBody = document.getElementById("userTableBody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            const allAccounts = [...adminAccounts, ...userAccounts];
+
+            allAccounts.forEach((account, index) => {
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${account.username}</td>
+                    <td>${account.role === 'admin' ? 'Admin' : 'User'}</td>
+                    <td><button onclick="deleteAccount(${index}, '${account.role}')">Delete</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Delete a specific account with animation
+        function deleteAccount(index, role) {
+            const row = document.querySelector(`#userTableBody tr:nth-child(${index + 1})`);
+            row.style.transition = "transform 0.3s ease-out";
+            row.style.transform = "scale(0)";
+
+            setTimeout(() => {
+                if (role === 'admin') {
+                    // Delete admin account
+                    adminAccounts.splice(index, 1);
+                    localStorage.setItem("adminAccounts", JSON.stringify(adminAccounts));
+                } else {
+                    // Adjust index for user accounts
+                    const userIndex = index - adminAccounts.length;
+                    userAccounts.splice(userIndex, 1);
+                    localStorage.setItem("userAccounts", JSON.stringify(userAccounts));
+                }
+
+                // Refresh the table after deletion
+                populateTable();
+            }, 300); // Wait for the animation to finish before deleting
+        }
+
+        // Delete all accounts with a confirmation and animation
+        function deleteAllAccounts() {
+            const confirmation = confirm("Are you sure you want to delete all accounts, including the admin account?");
+            if (confirmation) {
+                const overlay = document.createElement("div");
+                overlay.style.position = "fixed";
+                overlay.style.top = "0";
+                overlay.style.left = "0";
+                overlay.style.width = "100%";
+                overlay.style.height = "100%";
+                overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+                overlay.style.zIndex = "1000";
+                overlay.style.display = "flex";
+                overlay.style.alignItems = "center";
+                overlay.style.justifyContent = "center";
+                overlay.style.color = "white";
+                overlay.style.fontSize = "24px";
+                overlay.innerHTML = "Deleting all accounts...";
+                document.body.appendChild(overlay);
+
+                setTimeout(() => {
+                    localStorage.removeItem("adminAccounts");
+                    localStorage.removeItem("userAccounts");
+                    adminAccounts = [];
+                    userAccounts = [];
+                    populateTable(); // Refresh the table after deletion
+                    overlay.style.display = "none"; // Remove the overlay
+                    alert("All accounts have been deleted.");
+                }, 2000); // Simulate a delay for the deletion process
+            }
+        }
+
+        // Run on page load
+        document.addEventListener("DOMContentLoaded", () => {
+            populateTable(); // Populate table when page loads
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <button onclick="deleteAllAccounts()" style="background-color: red; color: white; padding: 10px;">Delete All Accounts</button>
+    </header>
+
+    <main>
+        <table border="1" style="width: 100%; text-align: left;">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <!-- Accounts will be populated here -->
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

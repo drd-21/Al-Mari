@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thank You for Your Purchase</title>
+    <link rel="icon" href="../img/logo2.webp" type="image/icon">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .receipt-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .order-summary {
+            text-align: left;
+        }
+        
+        .order-summary h2 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4CAF50;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        
+        .order-summary p, .order-summary ul {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            text-align: left;
+        }
+        
+        .order-summary ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .order-summary ul li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        .order-summary ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .total {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: left;
+            color: #000;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        footer button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        
+        footer button:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+        
+        footer button:active {
+            background: #3e8e41;
+            transform: scale(0.95);
+        }
+        
+        .basta {
+            max-width: 600px;
+            margin: 10px auto;
+            padding: 20px;
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .basta li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ccc;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .basta li:last-child {
+            border-bottom: none;
+        }
+        
+
+    </style>
+
+</head>
+
+<body>
+    <!-- Sidebar navigation -->
+    <div id="sidebar">
+        <div id="treelines" onclick="show()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Logo and navigation links -->
+        <div>
+            <ul>
+                <div class="user">
+                    <img src="../img/logo2.webp" height="100" />
+                </div>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="home.html"><b>HOME</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="MENU/platter.html"><b>MENU</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="about.html"><b>ABOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="contact.html"><b>CONTACT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="index.html" class="logoutButton"><b>LOGOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="MENU/order.html"><b>ORDER</b></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="menuMain">
+        <div class="menuTitle">
+            <h1>Thank You for Your Purchase!</h1>
+            <p>Your order has been successfully placed. We will process it shortly.</p>
+            <p>We appreciate your business!</p>
+        </div>
+    </main>
+
+    <div class="receipt-container">
+        <h1>Order Receipt</h1>
+        
+        <div class="order-summary">
+            <h2>Customer Information:</h2>
+            <p><strong>Name:</strong> <span id="receiptCustomerName"></span></p>
+            <p><strong>Address:</strong> <span id="receiptCustomerAddress"></span></p>
+            <p><strong>Phone:</strong> <span id="receiptCustomerPhone"></span></p>
+            <p><strong>Estimated Delivery Time:</strong> <span id="receiptDeliveryTime"></span></p>
+
+            <h2>Items Ordered:</h2>
+            <ul class="basta" id="receiptItemList"></ul>
+
+            <div class="total">
+                <h3>Total Amount: ₱<span id="receiptTotalAmount"></span></h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the order data from localStorage
+            const orderData = JSON.parse(localStorage.getItem('orderData'));
+    
+            if (orderData) {
+                // Display customer information
+                document.getElementById('receiptCustomerName').textContent = orderData.customerName;
+                document.getElementById('receiptCustomerAddress').textContent = orderData.customerAddress;
+                document.getElementById('receiptCustomerPhone').textContent = orderData.customerPhone;
+                document.getElementById('receiptDeliveryTime').textContent = orderData.deliveryTime;
+    
+                // Display ordered items
+                const receiptItemList = document.getElementById('receiptItemList');
+                orderData.items.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${item.name} - Quantity: ${item.quantity} - Price: ₱${item.price}`;
+                    receiptItemList.appendChild(listItem);
+                });
+    
+                // Display total amount
+                document.getElementById('receiptTotalAmount').textContent = orderData.totalAmount.toFixed(2);
+            } else {
+                // Show an error message popup
+                alert("No order placed. Please place an order before proceeding.");
+            }
+        });
+        // Function to toggle the sidebar
+        function show() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('treelines').classList.toggle('activebtn');
+        }
+    </script>
+</body>
+
+</html>

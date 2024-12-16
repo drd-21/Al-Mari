@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="login.css">
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+        rel="stylesheet"
+    />
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("signup-form");
+            const errorMessage = document.getElementById("error-message");
+
+            form.addEventListener("submit", (event) => {
+                event.preventDefault(); // Prevent actual form submission
+
+                // Get the form values
+                const username = document.getElementById("username").value;
+                const password = document.getElementById("password").value;
+                const email = document.getElementById("email").value;
+                const role = document.getElementById("role").value;
+
+                // Determine the storage location based on role
+                const storageKey = role === "admin" ? "adminAccounts" : "userAccounts";
+                const accounts = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+                // Check if the username already exists in the selected storage
+                const usernameExists = accounts.some(account => account.username === username);
+
+                if (usernameExists) {
+                    // Display error message if username already exists
+                    errorMessage.textContent = "Username already exists. Please choose a different username.";
+                    errorMessage.style.display = "block";
+                    return; // Stop form submission
+                }
+
+                // Add the new account to the accounts array, including the role
+                accounts.push({ username, password, email, role });
+
+                // Save the updated accounts array to localStorage
+                localStorage.setItem(storageKey, JSON.stringify(accounts));
+
+                // Show a success message and redirect to login page
+                alert(`${role.charAt(0).toUpperCase() + role.slice(1)} account created successfully!`);
+                window.location.href = "index.html"; // Redirect to the login page
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="overlay open">
+        <div class="login">
+            <div class="header">
+                <h1>Sign Up</h1>
+                <i class="fas fa-times" onclick="window.location.href='index.html'"></i>
+            </div>
+            <div class="body">
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="role">Account Type:</label>
+                        <select id="role" name="role" required>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="username" name="username" placeholder="Username" required>
+                    </div>
+
+                    <div class="form-group body2">
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                        <img src="img/hide.png" id="eyeicon" alt="Toggle Password Visibility">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+
+                    <p id="error-message" style="color: red;"></p>
+
+                    <div class="footer">
+                        <button type="submit">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let eyeicon = document.getElementById("eyeicon");
+        let password = document.getElementById("password");
+
+        eyeicon.onclick = function () {
+            if (password.type === "password") {
+                password.type = "text";
+                eyeicon.src = "img/eye.png";
+            } else {
+                password.type = "password";
+                eyeicon.src = "img/hide.png";
+            }
+        };
+    </script>
+</body>
+</html>

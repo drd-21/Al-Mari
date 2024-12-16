@@ -1,0 +1,124 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body {
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: #321E1E; /* Dark background for contrast */
+  }
+  
+  .btn {
+    position: absolute;
+    top: 10px; /* Distance from the top of the page */
+    right: 10px; /* Distance from the right of the page */
+    padding: 10px;
+  }
+  
+  .overlay {
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 100;
+  }
+  
+  .overlay.open {
+    display: flex;
+    animation: show-overlay 0.5s;
+  }
+  
+  @keyframes show-overlay {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+  
+  .login {
+    padding: 50px 25px;
+    background: #DED0B6; /* Light background for the login container */
+    border-radius: 10px;
+  }
+  
+  .header {
+    position: relative;
+  }
+  
+  .header h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #333; /* Darker text for contrast */
+    padding-bottom: 7px;
+    border-bottom: 2px solid #333; /* Match header color */
+  }
+  
+  .header i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .body .form input {
+    display: block;
+    padding: 10px;
+    margin: 25px 10px;
+    outline: none;
+    border: solid #ccc 1px; /* Match border styling */
+    color: #333;
+    transition: 0.4s;
+  }
+  
+  .body2 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .body2 input {
+    width: 100%;
+  }
+  
+  .body2 img {
+    width: 35px;
+    cursor: pointer;
+  }
+  
+  .body .form input:focus {
+    border-color: #7d8329; /* Focus state color */
+    box-shadow: 0 0 4px rgba(125, 131, 41, 0.5); /* Subtle glow effect */
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center; /* Aligns buttons vertically */
+    gap: 20px; /* Adds space between the buttons */
+    margin-top: 20px; /* Adds spacing above the footer section */
+  }
+  
+  .footer button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #7d8329; /* Olive green */
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .footer button:hover {
+    background-color: #45a049; /* Darker green for hover effect */
+  }
+  

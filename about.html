@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Mari cafe and Restaurant</title>
+    <link rel="icon" href="img/logo2.webp" type="image/icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar navigation -->
+    <div id="sidebar">
+        <div class="" id="treelines" onclick="show()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Logo and navigation links -->
+        <div>
+            <ul>
+                <div class="user">
+                    <img src="../img/logo2.webp" height="100" />
+                </div>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="home.html"><b>HOME</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="MENU/platter.html"><b>MENU</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="about.html"><b>ABOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="contact.html"><b>CONTACT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="index.html" class="logoutButton"><b>LOGOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="MENU/order.html"><b>ORDER</b></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="menuTitle">
+        <ul>
+            <br>
+
+        </ul>
+    </div>
+    <!-- JavaScript for automatic slide change and sidebar toggle -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var counter = 1;
+            setInterval(function () {
+                document.getElementById('r' + counter).checked = true;
+                counter = (counter % 4) + 1; // Improved counter reset
+            }, 3000);
+        });
+
+        function show() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('treelines').classList.toggle('activebtn');
+        }
+
+        // Add event listener to close sidebar when clicking outside of it
+        document.addEventListener('click', function (event) {
+            var sidebar = document.getElementById('sidebar');
+            var treelines = document.getElementById('treelines');
+            var targetElement = event.target; // clicked element
+
+            // Check if the clicked element is not the sidebar or treelines
+            if (!sidebar.contains(targetElement) && !treelines.contains(targetElement)) {
+                // Close the sidebar
+                sidebar.classList.remove('active');
+                treelines.classList.remove('activebtn');
+            }
+        });
+    </script>
+
+    <div class="about">
+        <div id="content-container">
+            <div id="left-content">
+                <ul>
+                    <h2 style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;">AL-MARI CAFE AND RESTAURANT</h2>
+                    <p style="text-align:justify; font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;">Welcome to our inclusive café and restaurant, where we prioritize creating a welcoming atmosphere for everyone. Our diverse menu offers a rich variety of carefully crafted beverages and dishes, ensuring there's something for every palate. Skilled baristas prepare quality coffee, making the experience accessible to all. From tantalizing appetizers to satisfying main courses and delightful desserts, our culinary offerings cater to diverse tastes. Whether it's a casual outing, a business meeting, or a gathering with friends, our establishment is designed to provide comfort and enjoyment for a diverse community. Join us for a memorable dining experience that truly welcomes everyone.</p></p>
+                    <br>
+                </ul>
+            </div>
+            <div id="right-content">
+                <div style="overflow: hidden;">
+                    <div class="eyy">
+                        <h1 style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #D5CEA3; position: absolute; width: 100%; margin-top: 250px;">"Taste the Difference, <br>Feel the Hospitality: <br>Where Every Plate Tells a Story."</h1>
+                    </div>
+                    <div class="slides">
+                        <input type="radio" name="r" id="r1" checked>
+                        <input type="radio" name="r" id="r2">
+                        <input type="radio" name="r" id="r3">
+                        <input type="radio" name="r" id="r4">
+            
+                        <div class="slide s1">
+                            <img src="img/326417848_900662744295895_1675347438775744428_n.webp" alt="Slide 1">
+                        </div>
+                        <div class="slide">
+                            <img src="img/326403112_1151394982240313_9132251068978017077_n.jpg" alt="Slide 2">
+                        </div>
+                        <div class="slide">
+                            <img src="img/1703207147721.webp" alt="Slide 3">
+                        </div>
+                        <div class="slide">
+                            <img src="img/1703207147730.webp" alt="Slide 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

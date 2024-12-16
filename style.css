@@ -1,0 +1,837 @@
+/* FILEPATH: /C:/Users/senor/Desktop/final website/style.css */
+
+/* Reset styles for all elements */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the content of the body */
+body {
+  justify-content: center;
+  background-color:#321E1E;
+  
+}
+
+
+
+.cart li {
+  text-align: center;
+  float: right;
+  font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif;
+  color: #DED0B6;
+}
+
+/* Styling for the menu container */
+.menu.container {
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+/* Styling for the menu list */
+.menu.container > ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Styling for each navigation item */
+.nav-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+/* Styling for the navigation links */
+.nav-item a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Styling for the navigation links on hover */
+.nav-item a:hover {
+  background-color: #ddd;
+}
+
+/* Styling for the header */
+header {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+/* Styling for the hello section */
+.hello {
+  display: block;
+  background-color: #A4907C;
+}
+
+/* Styling for the hello section links */
+.hello a {
+  font-size: 20px;
+}
+
+/* Styling for the hello section links on hover */
+.hello a:hover {
+  background-color: #E5E5CB;
+}
+
+/* Additional styling for the header */
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* Styling for the main navigation */
+ul {
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #4E3636;
+}
+
+/* Styling for each list item in the navigation */
+li {
+  float: left;
+}
+.user {
+  float: left;
+}
+/* Styling for the links in the navigation */
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+li {
+  margin-top: 2%;
+  margin-bottom: 2% ; 
+}
+
+/* Styling for the links in the navigation on hover */
+li a:hover {
+  background-color: #321E1E;
+}
+
+/* Styling for the active navigation item */
+.active {
+  background-color: #321E1E;
+}
+
+/* Styling for links inside paragraphs */
+p a {
+  list-style-type: none;
+  color: black;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+/* Styling for the menu title */
+.menuTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+}
+.menuTitle h1 {
+  color: white;
+  font-family: 'Futura Lt BT Light', Arial, Helvetica, sans-serif;
+}
+
+/* Styling for the menu title list */
+.menuTitle ul {
+  background-color: #321E1E;
+  padding: 3px;
+}
+/* Styling for the main menu container */
+.menuMain {
+  width: 100%;
+  max-width: 1200px; /* Optional: limit maximum width for readability */
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Styling for the menu title paragraphs */
+.menuTitle p {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Additional styling for the hello section with class "good" */
+.hello li.good {
+  font-weight: bold;
+  background-color: #D5CEA3;
+}
+
+/* Styling for the menu container with id "menuContainer" */
+#menuContainer {
+  padding: 15px;
+  background-color: #DED0B6;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  margin: 10px;
+}
+
+/* Styling for the menu categories */
+#menuCategories {
+  font-size: 20px;
+  font-family: 'Anton', sans-serif;
+  padding: 0 30px;
+}
+
+/* Styling for the menu categories list */
+#menuCategories ul {
+  cursor: pointer;
+  padding: 20px 0;
+  background-color: #DED0B6;
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 2px;
+}
+
+/* Styling for the active menu category */
+#menuCategories ul li.active {
+  border-bottom: 3px solid #665A48;
+  background-color: #DED0B6;
+}
+
+/* Styling for the menu category links */
+#menuCategories ul a {
+  padding: 20px;
+  color: #000;
+  display: flex;
+}
+
+/* Styling for the menu category links on hover */
+#menuCategories ul a:hover {
+  background-color:#AD8E70;
+}
+
+/* Additional styling for the flex-cent-col-resp list with class "active" */
+.flex-cent-col-resp li.active {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+/* Styling for the flex-cent-col-resp list */
+.flex-cent-col-resp {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Additional styling for the flex-cent-col-resp list with class "ok" */
+.flex-cent-col-resp li.ok {
+  font-weight: bold;
+  display: block;
+}
+
+/* Styling for the gets class inside the flex-cent-col-resp list */
+.flex-cent-col-resp .gets {
+  list-style: none;
+  padding: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Styling for the item1 class inside a list */
+.item1 ul {
+  padding: 20px;
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #AD8E70;
+  display: grid;
+  grid-template-columns: repeat(2, 3fr);
+}
+
+/* Styling for the menu list */
+.menu ul {
+  list-style: none;
+  padding: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Styling for the h2 headings inside list items */
+li h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+/* Styling for the hi class inside a list */
+.hi ul {
+  float: right;
+  background-color: #DED0B6;
+}
+
+/* Styling for the note class inside a list */
+.note ul {
+  padding: 20px;
+  background-color: #DED0B6;
+}
+
+.boo {
+  list-style: disc;
+}
+/* Styling for the slides container */
+.slides {
+  width: 500%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Styling for each slide */
+.slide {
+  width: 20%;
+  transition: 0.5s;
+}
+
+/* Styling for images inside slides */
+.slide img {
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+}
+
+/* Styling for the radio buttons */
+input[name="r"] {
+  position: absolute;
+  visibility: hidden;
+}
+
+/* Styling for the first slide when radio button 1 is checked */
+#r1:checked ~ .s1 {
+  margin-left: 0;
+}
+
+/* Styling for the first slide when radio button 2 is checked */
+#r2:checked ~ .s1 {
+  margin-left: -20%;
+}
+
+/* Styling for the first slide when radio button 3 is checked */
+#r3:checked ~ .s1 {
+  margin-left: -40%;
+}
+
+/* Styling for the first slide when radio button 4 is checked */
+#r4:checked ~ .s1 {
+  margin-left: -60%;
+}
+
+/* Styling for the navigation auto div */
+.navigation-auto div {
+  border: #776B5D;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+.contact {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  background-color:#321E1E;
+}
+
+.about {
+  max-width: 900px;
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  background-color:#321E1E;
+}
+
+.about #content-container {
+  flex-direction: column;
+}
+
+#content-container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 15px;
+  background-color: #DED0B6;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  margin: 10px;
+
+}
+
+#content-container, #right-content {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 15px;
+  background-color: #DED0B6;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  margin: 10px;
+
+}
+
+#bottom-content {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 15px;
+  background-color: #DED0B6;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  margin: 10px;
+
+}
+
+#content-container, #left-content {
+  background-color: #A4907C;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  margin: 10px;
+  position: relative;
+  z-index: 0;
+}
+
+#left-content, #right-content, #bottom-content {
+  flex: 1;
+}
+
+#left-content {
+  background-color: #321E1E;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+#left-content ul {
+  background-color: #A4907C;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+
+#right-content, #bottom-content {
+  position: relative;
+}
+
+#right-content {
+  overflow: hidden;
+  background-color: #321E1E;
+}
+
+#bottom-content {
+  height: 15vh;
+  min-height: 100px; /* Set a minimum height to ensure visibility */
+  padding: 15px;
+  background-color: #4E3636;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  margin: 10px;
+}
+
+iframe {
+  border: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+
+/* Media query for screens with a maximum width of 1000px */
+@media screen and (max-width: 1000px) {
+  /* Reset styles for all elements */
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Styling for the sidebar */
+  #sidebar {
+    position: absolute;
+    width: 180px;
+    height: 100%;
+    background: #4E3636;
+    left: -198px;
+    transition: .4s;
+    display: inline-flex;
+    backdrop-filter: blur(5px);
+    justify-content: space-between;
+    display: inline-block;
+    z-index: 100;
+  }
+
+  /* Styling for the logo image */
+  .logo-img {
+    width: 100%;
+    border-radius: 100%;
+    margin: 0;
+  }
+
+  /* Styling for the navigation links on hover */
+  li a:hover {
+    opacity: 50%;
+  }
+
+  /* Styling for the navigation links */
+  li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+  }
+
+  /* Styling for the active sidebar */
+  #sidebar.active {
+    left: 0;
+  }
+
+  /* Styling for the sidebar list items */
+  #sidebar ul li {
+    list-style: none;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px 24px;
+    justify-content: center;
+  }
+
+  /* Styling for the treelines */
+  #sidebar #treelines {
+    position: relative;
+    top: 5px;
+    left: 220px;
+  }
+
+  /* Styling for the treeline spans */
+  #treelines span {
+    width: 30px;
+    height: 4px;
+    background: #DED0B6;
+    display: block;
+    margin-top: 3px;
+    transform: rotate(0) translate(0, 0);
+    opacity: 1;
+    transition: all .5s ease;
+  }
+
+  /* Styling for the treeline span when active button is clicked */
+  #treelines.activebtn span:nth-child(1) {
+    transform: rotate(45deg) translate(3px, 4px);
+  }
+
+  /* Styling for the treeline span when active button is clicked */
+  #treelines.activebtn span:nth-child(2) {
+    opacity: 0;
+  }
+
+  /* Styling for the treeline span when active button is clicked */
+  #treelines.activebtn span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -7px);
+  }
+
+  .item1 ul { /*menu inside the box*/
+    padding: 20px;
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #AD8E70;
+    display: grid;
+    grid-template-columns:none;
+  }
+
+  #content-container {
+    flex-direction: column;
+  }
+
+  #bottom-content {
+    height: 15vh;
+    min-height: 200px; /* Set a minimum height to ensure visibility */
+    padding: 15px;
+    background-color: #4E3636;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    margin: 10px;
+  }
+
+  ul .cart li a{
+    text-align: center;
+    float: none;
+    display: block;
+  }
+
+}
+.logout-btn {
+  display: inline-block;
+  background-color: #AD8E70;
+  color: white;
+  text-align: center;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-family: 'Anton', sans-serif;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-right: 15px; /* Adjust for spacing */
+}
+
+.logout-btn:hover {
+  background-color: #665A48; /* Darker shade for hover */
+  color: #DED0B6; /* Lighter text color for hover */
+}
+/* Style for card container */
+.card {
+  position: relative;
+  width: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  margin: 10px;
+}
+
+.card img {
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.card-content {
+  padding: 10px;
+  background-color: #fff;
+}
+
+.card h2 {
+  font-family: Futura Lt BT Light, Arial, Helvetica, sans-serif;
+  font-size: 1.2em;
+}
+
+.card p {
+  font-family: Futura Lt BT Light, Arial, Helvetica, sans-serif;
+  color: #888;
+}
+
+/* Hover effect */
+.card:hover {
+  transform: scale(1.05); /* Zoom in */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover img {
+  transform: scale(1.1); /* Zoom in image */
+}
+
+/* Add animation for click (example effect) */
+.card:active {
+  transform: scale(1.02);
+}
+/* Order Container Styles */
+.order-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Order List (Cards) Layout */
+.order-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping to new rows */
+  gap: 16px; /* Space between cards */
+  justify-content: flex-start; /* Align items to the start */
+  width: 100%;
+}
+
+/* Order Summary Styling */
+.order-summary {
+  width: 30%; /* Set a fixed width or use a percentage to control layout */
+  text-align: right;
+  padding: 20px;
+}
+
+.order-summary h2 {
+  font-family: 'Futura Lt BT Light', Arial, Helvetica, sans-serif;
+  color: #fcfafa;
+}
+
+/* Checkout Button Styling */
+.order-summary #checkoutButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.order-summary #checkoutButton:hover {
+  background-color: #45a049;
+}
+
+/* Card (Order Item) Styles */
+.order-card {
+  flex: 1 1 calc(33.333% - 16px); /* Three cards per row */
+  max-width: calc(33.333% - 16px); /* Proper max-width for grid items */
+  box-sizing: border-box; /* Include padding and border in size */
+}
+
+/* Individual Card Layout */
+.card {
+  background-color: #f9f9f9; /* Card background */
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Hover effect on card */
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Card Content Styling */
+.card-content h2 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+.card-content p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Remove Button (on cards) Styling */
+.removeButton {
+  background-color: #e74c3c; /* Red color */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.removeButton:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Media Queries for Responsive Design */
+
+/* Tablet Size - 768px */
+@media (max-width: 768px) {
+  .order-card {
+    flex: 1 1 calc(50% - 16px); /* Two cards per row on smaller screens */
+  }
+
+  .order-summary {
+    width: 100%; /* Full width on smaller screens */
+    text-align: left;
+  }
+}
+
+/* Mobile Size - 480px */
+@media (max-width: 480px) {
+  .order-card {
+    flex: 1 1 100%; /* One card per row on very small screens */
+  }
+
+  .order-summary {
+    width: 100%; /* Full width */
+    padding: 10px; /* Adjust padding for smaller screens */
+    text-align: left;
+  }
+}
+
+/* Container to position the form */
+.customer-details-container {
+  position: fixed;
+  bottom: 20px; /* Adjust to place it closer to the bottom */
+  right: 20px; /* Align to the right side of the screen */
+  width: auto;
+  max-width: 600px; /* Set max-width if needed */
+  background-color: rgba(0, 0, 0, 0.7); /* Optional: Semi-transparent background */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  z-index: 10; /* Ensure the form is above other content */
+}
+
+/* Customer Details Styles (no change needed) */
+.customer-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Keep default left alignment */
+  gap: 20px;
+}
+
+/* Input and Textarea Styles */
+.customer-details input,
+.customer-details textarea {
+  width: 100%; /* Full width within the container */
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Map Container */
+.map-container {
+  width: 100%;
+  height: 300px; /* Fixed height for the map */
+  max-width: 600px; /* Ensure it doesn't stretch too much */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+/* Checkout Button Styling */
+.order-summary #checkoutButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 200px;
+}
+
+.order-summary #checkoutButton:hover {
+  background-color: #45a049;
+}
+
+
+
+

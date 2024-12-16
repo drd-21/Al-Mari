@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Mari cafe and Restaurant</title>
+    <link rel="icon" href="img/logo2.webp" type="image/icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar navigation -->
+    <div id="sidebar">
+        <div class="" id="treelines" onclick="show()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Logo and navigation links -->
+        <div>
+            <ul>
+                <div class="user">
+                    <img src="../img/logo2.webp" height="100" />
+                </div>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="home.html"><b>HOME</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="MENU/platter.html"><b>MENU</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="about.html"><b>ABOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="contact.html"><b>CONTACT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="index.html" class="logoutButton"><b>LOGOUT</b></a></li>
+                <li style="text-align: center; font-family:Futura Lt BT Light,Arial, Helvetica, sans-serif; color: #DED0B6;"><a href="MENU/order.html"><b>ORDER</b></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="menuTitle">
+        <ul>
+            <br>
+
+        </ul>
+    </div>
+    <!-- JavaScript for automatic slide change and sidebar toggle -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var counter = 1;
+            setInterval(function () {
+                document.getElementById('r' + counter).checked = true;
+                counter = (counter % 4) + 1; // Improved counter reset
+            }, 3000);
+        });
+
+        function show() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('treelines').classList.toggle('activebtn');
+        }
+
+        // Add event listener to close sidebar when clicking outside of it
+        document.addEventListener('click', function (event) {
+            var sidebar = document.getElementById('sidebar');
+            var treelines = document.getElementById('treelines');
+            var targetElement = event.target; // clicked element
+
+            // Check if the clicked element is not the sidebar or treelines
+            if (!sidebar.contains(targetElement) && !treelines.contains(targetElement)) {
+                // Close the sidebar
+                sidebar.classList.remove('active');
+                treelines.classList.remove('activebtn');
+            }
+        });
+    </script>
+
+    <div class="contact">
+        <div id="content-container">
+            <div id="left-content">
+                <ul>
+                    <h2 style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;">ADDRESS</h2>
+                    <p style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;"><a href="https://www.google.com/maps/place/Al-mari%E2%80%99s+Cafe/@14.1038876,122.9319909,14z/data=!4m10!1m2!2m1!1sAM+MARI+DAET!3m6!1s0x3398af148e2d4f67:0x2fc6246496d0a81d!8m2!3d14.1148089!4d122.9695821!15sCgxBTSBNQVJJIERBRVRaDiIMYW0gbWFyaSBkYWV0kgELY29mZmVlX3Nob3DgAQA!16s%2Fg%2F11k9fqys0x?entry=ttu" target="_blank" rel="noopener noreferrer">Brgy. Gubat, Purok Bayabas Mercedes Road, Daet, Camarines Norte</a></p>
+                    <br>
+                    <h2 style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;">CONTACTS</h2>
+                    <p style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;">Feel free to contact us!</p>
+                    <p style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;">Email Address: 0115almari@gmail.com</p>
+                    <p style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;">Contact number: +63 985 082 7482</p>
+                    <br>
+                    <h2 style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;">OPERATING HOURS:</h2>
+                    <p style="font-family: Futura Lt BT Light,Arial, Helvetica, sans-serif;">Open Daily: 10:00AM-9:00PM</p>
+                </ul>
+            </div>
+            <div id="right-content">
+                <iframe src="https://www.google.com/maps/embed?pb=!3m2!1sen!2sph!4v1703176615633!5m2!1sen!2sph!6m8!1m7!1s56YgSjWxaIOxh1dhX1T4HQ!2m2!1d14.11466065383673!2d122.9693182238119!3f7.5945911698137785!4f-8.304359694052863!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <div id="bottom-content">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1917.1396878045134!2d122.96827383088745!3d14.114619899399463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3398af148e2d4f67%3A0x2fc6246496d0a81d!2sAl-mari%E2%80%99s%20Cafe!5e0!3m2!1sen!2sph!4v1703216914694!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</body>
+</html>
