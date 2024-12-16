@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Dev WebApp</title>
+    <link rel="stylesheet" href="login.css">
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+        rel="stylesheet"
+    />
+    <script>
+        // Retrieve accounts from localStorage or initialize empty
+        const adminAccounts = JSON.parse(localStorage.getItem("adminAccounts")) || [];
+        const userAccounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
+
+        // Initialize sample accounts if not found
+        if (adminAccounts.length === 0 && userAccounts.length === 0) {
+            const defaultAdmin = { username: "adminUser", password: "adminPass", role: "admin" };
+            const defaultUser = { username: "user1", password: "userPass", role: "user" };
+            localStorage.setItem("adminAccounts", JSON.stringify([defaultAdmin]));
+            localStorage.setItem("userAccounts", JSON.stringify([defaultUser]));
+            alert("Sample accounts have been created for initial use.");
+        }
+
+        // Check account status on load
+        function checkAccountStatus() {
+            const signupButton = document.getElementById("signupButton");
+            const errorMessage = document.getElementById("error-message");
+            const usernameField = document.querySelector('input[name="username"]');
+            const passwordField = document.querySelector('input[name="password"]');
+            const loginButton = document.querySelector('.footer button[type="submit"]');
+
+            // If no admin or user accounts exist
+            if (adminAccounts.length === 0 && userAccounts.length === 0) {
+                errorMessage.textContent = "No accounts currently exist. Please contact the administrator or sign up as an admin.";
+                // Disable login form
+                usernameField.disabled = true;
+                passwordField.disabled = true;
+                loginButton.disabled = true;
+                // Hide signup button
+                signupButton.style.display = "none";
+            } else if (adminAccounts.length === 0) {
+                errorMessage.textContent = "No admin accounts exist. Please sign up as an admin first.";
+                signupButton.style.display = "block";
+            } else {
+                errorMessage.textContent = ""; // Clear any previous error messages
+                signupButton.style.display = "block";
+            }
+        }
+
+        // Process login
+        function processLogin(event) {
+            event.preventDefault();
+
+            const usernameField = document.querySelector('input[name="username"]');
+            const passwordField = document.querySelector('input[name="password"]');
+            const errorMessage = document.getElementById("error-message");
+
+            const username = usernameField.value.trim();
+            const password = passwordField.value.trim();
+
+            // Reset error message
+            errorMessage.textContent = "";
+
+            // Check if fields are empty
+            if (!username || !password) {
+                errorMessage.textContent = "Both fields are required.";
+                return;
+            }
+
+            const admin = adminAccounts.find(acc => acc.username === username && acc.password === password);
+            const user = userAccounts.find(acc => acc.username === username && acc.password === password);
+
+            if (admin) {
+                alert("Admin login successful!");
+                window.location.href = "accounts.html"; // Redirect to admin dashboard
+            } else if (user) {
+                alert("User login successful!");
+                window.location.href = "home.html"; // Redirect to user dashboard
+            } else {
+                errorMessage.textContent = "Invalid username or password.";
+            }
+        }
+
+        // Call the account status check on page load
+        document.addEventListener("DOMContentLoaded", checkAccountStatus);
+    </script>
+</head>
+<body>
+    <div class="overlay open">
+        <div class="login">
+            <div class="header">
+                <h1>Login</h1>
+            </div>
+            <div class="body">
+                <form class="form" onsubmit="processLogin(event)">
+                    <input type="text" name="username" placeholder="Username" />
+                    <div class="body2">
+                        <input type="password" name="password" placeholder="Password" id="password" />
+                        <img src="img/hide.png" id="eyeicon" alt="Toggle Password Visibility">
+                    </div>
+                    <p id="error-message" style="color: red;"></p>
+                    <div class="footer">
+                        <button type="submit">Login</button>
+                        <button id="signupButton" onclick="window.location.href='signup.html'">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let eyeicon = document.getElementById("eyeicon");
+        let password = document.getElementById("password");
+
+        eyeicon.onclick = function () {
+            if (password.type === "password") {
+                password.type = "text";
+                eyeicon.src = "img/eye.png";
+            } else {
+                password.type = "password";
+                eyeicon.src = "img/hide.png";
+            }
+        };
+    </script>
+</body>
+</html>
